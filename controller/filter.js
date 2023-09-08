@@ -25,6 +25,7 @@ const filter = async (req, res) => {
         });
       
         console.log(response);
+        res.send(response);
       }
   module.exports = {
     filter
