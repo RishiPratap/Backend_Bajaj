@@ -11,7 +11,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 
-// Use the usersRouter for the '/users' route
 app.use('/bfhl', usersRouter);
 
 app.listen(port);

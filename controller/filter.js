@@ -1,11 +1,12 @@
 const filter = async (req, res) => {
-    const val = req.body.data || []; // Default to an empty array if 'data' is missing in the request
-  
+  try {
+    const val = req.body.data || []; 
+
     const response = {
       is_success: true,
-      user_id: "john_doe_17091999",
-      email: "john@xyz.com",
-      roll_number: "ABCD123",
+      user_id: "Rishi Pratap",
+      email: "rp0258@srmist.edu.in",
+      roll_number: "RA2011029010034",
       numbers: val.filter(item => !isNaN(item)),
       alphabets: val.filter(item => typeof item === "string" && /^[A-Za-z]$/.test(item)),
       highest_alphabet: val.reduce((highest, item) => {
@@ -19,12 +20,15 @@ const filter = async (req, res) => {
         return highest;
       }, [])
     };
-  
+
     console.log(response);
     res.send(response);
-  };
-  
-  module.exports = {
-    filter
-  };
-  
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+module.exports = {
+  filter
+};
